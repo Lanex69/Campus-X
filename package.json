@@ -1,0 +1,25 @@
+{
+  "name": "smart-campus-system",
+  "version": "1.0.0",
+  "description": "Smart Campus Service Booking and Management System (MongoDB Atlas + Mongoose + React + Express)",
+  "private": true,
+  "scripts": {
+    "start": "node server/server.js",
+    "server": "node server/server.js",
+    "client": "npm --prefix client run dev",
+    "build": "npm --prefix client run build",
+    "seed": "node server/scripts/seed.js",
+    "test": "npm --prefix server test",
+    "postinstall": "npm --prefix server install && npm --prefix client install"
+  },
+  "keywords": [
+    "mongodb",
+    "mongoose",
+    "react",
+    "express",
+    "smart-campus",
+    "booking-system"
+  ],
+  "author": "Smart Campus Engineering",
+  "license": "MIT"
+}
