@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: smart-campus-system
+    name: campus-x-api
     env: node
     plan: free
     buildCommand: npm install && npm run build
@@ -21,6 +21,6 @@ services:
       - key: CLIENT_URL
         sync: false
       - key: ADMIN_EMAIL
-        value: admin@smartcampus.edu
+        value: admin@campus-x.edu
       - key: ADMIN_PASSWORD
         value: Admin@123456

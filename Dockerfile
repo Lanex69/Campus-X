@@ -1,4 +1,4 @@
-# Multi-stage Dockerfile for Smart Campus Management System
+# Multi-stage Dockerfile for Campus-X Management System
 # Stage 1: Build Frontend Assets
 FROM node:20-alpine AS client-builder
 WORKDIR /app/client

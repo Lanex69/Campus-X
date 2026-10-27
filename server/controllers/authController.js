@@ -26,7 +26,7 @@ const sendTokenResponse = (user, statusCode, res) => {
 
   const token = jwt.sign(
     payload,
-    process.env.JWT_SECRET || 'smart_campus_jwt_secret_fall_2026',
+    process.env.JWT_SECRET || 'campus_x_jwt_secret_fall_2026',
     {
       expiresIn: process.env.JWT_EXPIRES_IN || '7d',
     }

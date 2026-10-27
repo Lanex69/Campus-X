@@ -4,8 +4,6 @@ import { useAuth } from '../../contexts/AuthContext.jsx';
 import {
   Lock,
   Mail,
-  Shield,
-  User,
   ArrowRight,
   AlertCircle,
   Building2,
@@ -43,11 +41,6 @@ export default function Login() {
     }
   };
 
-  const fillCredentials = (demoEmail, demoPass) => {
-    setEmail(demoEmail);
-    setPassword(demoPass);
-  };
-
   return (
     <div className="min-h-[75vh] flex items-center justify-center py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-6">
@@ -57,40 +50,11 @@ export default function Login() {
           </div>
 
           <h1 className="text-2xl font-extrabold tracking-tight text-stone-900">
-            Sign In to Smart Campus
+            Sign In to Campus-X
           </h1>
           <p className="text-xs text-stone-500 max-w-sm mx-auto">
             Access study rooms, compute clusters, athletic facilities, and passes.
           </p>
-        </div>
-
-        {/* Demo Fast-Fill Bar */}
-        <div className="p-3.5 bg-stone-100 rounded-xl border border-stone-200 space-y-2">
-          <div className="flex items-center justify-between text-[11px] font-mono">
-            <span className="font-bold text-stone-700 uppercase tracking-wider">
-              Quick Test Accounts
-            </span>
-            <span className="text-[10px] text-stone-500">1-CLICK LOGIN</span>
-          </div>
-
-          <div className="grid grid-cols-2 gap-2">
-            <button
-              type="button"
-              onClick={() => fillCredentials('student@campus.edu', 'Student@123')}
-              className="py-1.5 px-2 bg-white hover:bg-stone-50 text-stone-800 border border-stone-300 rounded-lg font-semibold transition text-[11px] flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
-            >
-              <User className="w-3.5 h-3.5 text-stone-600" />
-              <span>Student Demo</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => fillCredentials('admin@smartcampus.edu', 'Admin@123456')}
-              className="py-1.5 px-2 bg-stone-800 hover:bg-stone-900 text-white rounded-lg font-semibold transition text-[11px] flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
-            >
-              <Shield className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Dean Admin</span>
-            </button>
-          </div>
         </div>
 
         {errorMsg && (

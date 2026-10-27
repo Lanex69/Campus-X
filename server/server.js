@@ -97,7 +97,7 @@ app.get('/api/health', (req, res) => {
 
   res.status(200).json({
     status: 'ok',
-    system: 'Smart Campus Service Booking and Management System',
+    system: 'Campus-X Service Booking and Management System',
     database: dbStatus,
     timestamp: new Date().toISOString(),
   });
@@ -152,7 +152,7 @@ export const startServer = async () => {
   if (process.env.NODE_ENV !== 'test') {
     server = app.listen(PORT, () => {
       console.log(`=======================================================`);
-      console.log(`🚀 Smart Campus Backend (MongoDB/Mongoose) on :${PORT}`);
+      console.log(`🚀 Campus-X Backend (MongoDB/Mongoose) on :${PORT}`);
       console.log(`📡 Health Check: http://localhost:${PORT}/api/health`);
       console.log(`=======================================================`);
     });

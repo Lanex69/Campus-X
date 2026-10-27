@@ -1,6 +1,6 @@
 # 🚀 Production Deployment Guide
 
-This guide covers deploying the **Smart Campus Service Booking and Management System** to production hosting.
+This guide covers deploying the **Campus-X Service Booking and Management System** to production hosting.
 
 ---
 
@@ -68,18 +68,18 @@ To run or deploy using Docker locally or on a VPS (AWS EC2, DigitalOcean Droplet
 
 1. **Build the container image**:
    ```bash
-   docker build -t smart-campus-system:latest .
+   docker build -t campus-x-system:latest .
    ```
 
 2. **Run the container**:
    ```bash
    docker run -d \
      -p 5000:5000 \
-     --name smart-campus \
+     --name campus-x \
      -e NODE_ENV=production \
      -e MONGODB_URI="mongodb+srv://<user>:<password>@<cluster>.mongodb.net/smartcampus?retryWrites=true&w=majority" \
      -e JWT_SECRET="your_long_random_production_secret" \
-     smart-campus-system:latest
+     campus-x-system:latest
    ```
 
 3. **Verify running status**:

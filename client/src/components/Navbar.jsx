@@ -50,7 +50,7 @@ export default function Navbar() {
             </div>
             <div>
               <div className="text-sm font-black tracking-tight text-stone-900 flex items-center gap-1.5">
-                <span>SMART CAMPUS</span>
+                <span>CAMPUS-X</span>
                 <span className="text-[10px] uppercase font-mono font-bold tracking-wider px-1.5 py-0.2 rounded bg-stone-200/80 text-stone-700">
                   PORTAL
                 </span>

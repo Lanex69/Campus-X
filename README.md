@@ -1,4 +1,4 @@
-# 🎓 Smart Campus Service Booking and Management System
+# 🎓 Campus-X — University Service Booking and Management System
 
 A full-stack, production-grade web application built for college campus resource allocation, space reservations, simulated fee payments, and administrative oversight.
 
@@ -152,7 +152,6 @@ Open your browser at **[http://localhost:5173](http://localhost:5173)**.
 | **Student (Demo 1)** | `student@campus.edu` | `Student@123` | Space reservations, demo payments, feedback |
 | **Student (Demo 2)** | `priya@campus.edu` | `Student@123` | Space reservations, demo payments, feedback |
 
-> *Tip: On the Login screen, click the **Student Demo** or **Dean Admin Demo** quick-fill button for 1-click evaluation without typing.*
 
 ---
 

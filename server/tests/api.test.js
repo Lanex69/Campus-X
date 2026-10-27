@@ -3,13 +3,13 @@ import request from 'supertest';
 import mongoose from 'mongoose';
 import app from '../server.js';
 
-describe('Smart Campus REST API Suite', () => {
+describe('Campus-X REST API Suite', () => {
   describe('GET /api/health', () => {
     it('should return 200 and system online status', async () => {
       const res = await request(app).get('/api/health');
       expect(res.statusCode).toBe(200);
       expect(res.body.status).toBe('ok');
-      expect(res.body.system).toContain('Smart Campus');
+      expect(res.body.system).toContain('Campus-X');
     });
   });
 

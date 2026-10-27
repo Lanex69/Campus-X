@@ -12,7 +12,7 @@ export default function Footer() {
             </div>
             <div>
               <div className="font-extrabold text-white text-sm tracking-tight flex items-center gap-2">
-                <span>SMART CAMPUS</span>
+                <span>CAMPUS-X</span>
                 <span className="text-[10px] font-mono uppercase bg-emerald-950 text-emerald-400 border border-emerald-800/60 px-1.5 py-0.2 rounded font-bold">
                   v2.5
                 </span>
@@ -40,7 +40,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-stone-500 font-mono">
-          <p>© 2026 Smart Campus Operations. Built with React 19, Tailwind CSS v4 & Express.js.</p>
+          <p>© 2026 Campus-X Operations. Built with React 19, Tailwind CSS v4 & Express.js.</p>
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1 text-emerald-400 font-semibold">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
