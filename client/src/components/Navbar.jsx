@@ -12,19 +12,15 @@ import {
   X,
   MapPin,
   ChevronDown,
-  Layers,
-  Check,
   Building2,
-  Lock,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 export default function Navbar() {
-  const { user, isAdmin, login, logout } = useAuth();
+  const { user, isAdmin, logout } = useAuth();
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [adminMenuOpen, setAdminMenuOpen] = useState(false);
-  const [switcherOpen, setSwitcherOpen] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -33,23 +29,6 @@ export default function Navbar() {
       navigate('/login');
     } catch (err) {
       toast.error('Logout failed');
-    }
-  };
-
-  const handleQuickSwitch = async (role) => {
-    try {
-      if (role === 'admin') {
-        await login({ email: 'admin@smartcampus.edu', password: 'Admin@123456' });
-        toast.success('Switched to Dean Admin Account');
-        navigate('/admin');
-      } else {
-        await login({ email: 'student@campus.edu', password: 'Student@123' });
-        toast.success('Switched to Student Account (Rahul Sharma)');
-        navigate('/');
-      }
-      setSwitcherOpen(false);
-    } catch (err) {
-      toast.error('Switch failed: ' + err.message);
     }
   };
 
@@ -184,88 +163,32 @@ export default function Navbar() {
 
           {/* Right Header Actions */}
           <div className="hidden md:flex items-center gap-2.5">
-            {/* Quick Evaluator Persona Switcher */}
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() => setSwitcherOpen(!switcherOpen)}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-stone-100 hover:bg-stone-200 border border-stone-300/80 text-stone-800 text-xs font-semibold transition cursor-pointer shadow-2xs"
-                title="Switch persona for grading"
-              >
-                <span className="w-2 h-2 rounded-full bg-emerald-600" />
-                <span className="truncate max-w-[120px]">
-                  {user ? user.name.split(' ')[0] : 'Demo Role'}
-                </span>
-                <span className={`text-[10px] uppercase font-mono px-1 py-0.2 rounded font-bold ${
-                  isAdmin ? 'bg-purple-100 text-purple-900' : 'bg-emerald-100 text-emerald-900'
-                }`}>
-                  {user?.role || 'Guest'}
-                </span>
-                <ChevronDown className="w-3 h-3 text-stone-400" />
-              </button>
-
-              {switcherOpen && (
-                <div
-                  className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-xl border border-stone-200 py-2 z-50 text-stone-800 animate-in fade-in"
-                  onClick={() => setSwitcherOpen(false)}
-                >
-                  <div className="px-3 py-1 border-b border-stone-100">
-                    <p className="text-[10px] font-bold uppercase tracking-wider text-stone-400">
-                      Evaluator Persona Switcher
-                    </p>
-                    <p className="text-[11px] text-stone-500">
-                      1-click instant login swap for testing
-                    </p>
-                  </div>
-
-                  <div className="p-1 space-y-1">
-                    <button
-                      type="button"
-                      onClick={() => handleQuickSwitch('student')}
-                      className="w-full text-left px-3 py-2 rounded-lg text-xs hover:bg-emerald-50 text-stone-800 hover:text-emerald-900 flex items-center justify-between transition cursor-pointer"
-                    >
-                      <div>
-                        <div className="font-bold flex items-center gap-1.5">
-                          <span>Rahul Sharma</span>
-                          <span className="text-[9px] bg-emerald-100 text-emerald-800 px-1.5 py-0.2 rounded font-mono">
-                            STUDENT
-                          </span>
-                        </div>
-                        <div className="text-[10px] text-stone-400">CS2024-042 • Computer Science</div>
-                      </div>
-                      {user?.role === 'student' && <Check className="w-4 h-4 text-emerald-700" />}
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => handleQuickSwitch('admin')}
-                      className="w-full text-left px-3 py-2 rounded-lg text-xs hover:bg-purple-50 text-stone-800 hover:text-purple-900 flex items-center justify-between transition cursor-pointer"
-                    >
-                      <div>
-                        <div className="font-bold flex items-center gap-1.5">
-                          <span>Dean Sarah Jenkins</span>
-                          <span className="text-[9px] bg-purple-100 text-purple-800 px-1.5 py-0.2 rounded font-mono">
-                            ADMIN
-                          </span>
-                        </div>
-                        <div className="text-[10px] text-stone-400">Campus Operations & Dean's Office</div>
-                      </div>
-                      {isAdmin && <Check className="w-4 h-4 text-purple-700" />}
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-
             {user ? (
-              <button
-                type="button"
-                onClick={handleLogout}
-                className="p-1.5 text-stone-500 hover:text-stone-900 hover:bg-stone-200/60 rounded-lg transition cursor-pointer"
-                title="Sign Out"
-              >
-                <LogOut className="w-4 h-4" />
-              </button>
+              <div className="flex items-center gap-2">
+                <Link
+                  to="/profile"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-stone-100 hover:bg-stone-200 border border-stone-300/80 text-stone-800 text-xs font-semibold transition shadow-2xs"
+                  title="View Profile"
+                >
+                  <User className="w-3.5 h-3.5 text-stone-600" />
+                  <span className="truncate max-w-[120px]">
+                    {user.name.split(' ')[0]}
+                  </span>
+                  <span className={`text-[10px] uppercase font-mono px-1.5 py-0.2 rounded font-bold ${
+                    isAdmin ? 'bg-purple-100 text-purple-900' : 'bg-emerald-100 text-emerald-900'
+                  }`}>
+                    {user.role}
+                  </span>
+                </Link>
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="p-1.5 text-stone-500 hover:text-stone-900 hover:bg-stone-200/60 rounded-lg transition cursor-pointer"
+                  title="Sign Out"
+                >
+                  <LogOut className="w-4 h-4" />
+                </button>
+              </div>
             ) : (
               <div className="flex items-center gap-2">
                 <Link
@@ -391,41 +314,25 @@ export default function Navbar() {
               </div>
             )}
 
-            {/* Persona Switch in Mobile */}
-            <div className="pt-2 border-t border-stone-200 px-3 flex gap-2">
-              <button
-                type="button"
-                onClick={() => {
-                  handleQuickSwitch('student');
-                  setMobileMenuOpen(false);
-                }}
-                className="flex-1 py-1.5 bg-stone-100 text-stone-800 text-[11px] font-bold rounded-lg border border-stone-300"
-              >
-                Student Demo
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  handleQuickSwitch('admin');
-                  setMobileMenuOpen(false);
-                }}
-                className="flex-1 py-1.5 bg-purple-100 text-purple-900 text-[11px] font-bold rounded-lg border border-purple-200"
-              >
-                Dean Admin
-              </button>
-            </div>
-
             {user ? (
-              <div className="pt-2 border-t border-stone-200 px-3">
+              <div className="pt-2 border-t border-stone-200 px-3 space-y-2">
+                <div className="flex items-center justify-between text-xs font-semibold text-stone-700 px-1">
+                  <span>{user.name}</span>
+                  <span className={`text-[10px] uppercase font-mono px-1.5 py-0.5 rounded font-bold ${
+                    isAdmin ? 'bg-purple-100 text-purple-900' : 'bg-emerald-100 text-emerald-900'
+                  }`}>
+                    {user.role}
+                  </span>
+                </div>
                 <button
                   type="button"
                   onClick={() => {
                     handleLogout();
                     setMobileMenuOpen(false);
                   }}
-                  className="w-full py-2 text-center text-xs font-bold text-rose-700 bg-rose-50 rounded-lg"
+                  className="w-full py-2 text-center text-xs font-bold text-rose-700 bg-rose-50 hover:bg-rose-100 rounded-lg transition"
                 >
-                  Sign Out ({user.name})
+                  Sign Out
                 </button>
               </div>
             ) : (
